@@ -1,523 +1,233 @@
-// 1-masala
-// function mySort(arr){
-// let sorted = [...arr].sort((a, b) => a - b)
-
-// let result = []
-// let left = 0
-// let right = sorted.length - 1
-
-// while (left <= right){
-//   if (left === right){
-//     result.push(sorted[left])
-//   }else {
-//     result.push(sorted[left])
-//     result.push(sorted[right])
-//   }
-//   left++
-//   right--
-// }
-// return result
-// }
-// console.log(mySort([5, 2, 9, 1, 5, 6]));
-
-// 2-masala
-// function myFunc(arr) {
-//   const count = {};
-//   let maxCount = 0;
-//   let mostFrequent;
-
-//   for (let item of arr) {
-//     count[item] = (count[item] || 0) + 1;
-
-//     if (count[item] > maxCount) {
-//       maxCount = count[item];
-//       mostFrequent = item;
-//     }
-//   }
-
-//   return mostFrequent;
-// }
-
-// console.log(myFunc([1, 3, 2, 3, 4, 3, 2, 1, 3]));
-
-// 3-masala
-// function myFunc(arr) {
+// // 1. 
+// function zigZagSort(arr) {
+//   arr.sort((a, b) => a - b);
 //   let result = [];
-
-//   for (let i = 0; i < arr.length; i++) {
-//     let num = arr[i];
-
-//     if (num % 2 !== 0) {
-//       result[result.length] = num * 2;
-//     } else {
-//       result[result.length] = num;
-//     }
+//   let left = 0, right = arr.length - 1;
+//   while (left <= right) {
+//     if (left === right) result.push(arr[left]);
+//     else result.push(arr[left], arr[right]);
+//     left++;
+//     right--;
 //   }
-
 //   return result;
 // }
+// console.log(zigZagSort([1, 4, 3, 2, 5]));
 
-// console.log(myFunc([1, 2, 3, 4, 5, 6]));
-
-// 4-masala
-// function funcPalindrom(arr) {
-//   let result = [];
-
-//   for (let i = 0; i < arr.length; i++) {
-//     let word = arr[i];
-//     let reversed = "";
-
-//     for (let j = word.length - 1; j >= 0; j--) {
-//       reversed += word[j];
-//     }
-
-//     if (word === reversed) {
-//       result[result.length] = word;
+// // 2. 
+// function mostFrequent(arr) {
+//   let counts = {};
+//   let maxCount = 0, element = arr[0];
+//   for (let x of arr) {
+//     counts[x] = (counts[x] || 0) + 1;
+//     if (counts[x] > maxCount) {
+//       maxCount = counts[x];
+//       element = x;
 //     }
 //   }
-
-//   return result;
+//   return element;
 // }
+// console.log(mostFrequent([1, 3, 2, 1, 4, 1, 2]));
 
-// console.log(funcPalindrom(["level", "hello", "anna", "world", "madam"]));
-
-// 5-masala
-// function twoWords(text) {
-//   let words = text.split(" ");
-//   let result = [];
-
-//   for (let i = 0; i < words.length; i++) {
-//     let count = 0;
-
-//     for (let j = 0; j < words.length; j++) {
-//       if (words[i] === words[j]) count++;
-//     }
-
-//     if (count === 2) {
-//       let exists = false;
-//       for (let k = 0; k < result.length; k++) {
-//         if (result[k] === words[i]) exists = true;
-//       }
-
-//       if (!exists) result[result.length] = words[i];
-//     }
-//   }
-
-//   return result;
+// // 3. 
+// function multiplyOdds(arr) {
+//   return arr.map(n => n % 2 !== 0 ? n * 2 : n);
 // }
+// console.log(multiplyOdds([1, 2, 3, 4, 5]));
 
-// console.log(twoWords("apple banana apple orange banana"));
+// // 4. 
+// function filterPalindromes(arr) {
+//   return arr.filter(s => s === s.split('').reverse().join(''));
+// }
+// console.log(filterPalindromes(["kiyik", "olma", "non", "mashina"]));
+// // 5. 
+// function doubleWords(str) {
+//   let words = str.split(' ');
+//   let counts = {};
+//   words.forEach(w => counts[w] = (counts[w] || 0) + 1);
+//   return words.filter(w => counts[w] === 2);
+// }
+// console.log(doubleWords("olma anor olma behi anor anor"));
 
-// 6-masala
-// function myFunc(text) {
-//   let words = text.split(" ");
+// // 6. 
+// function sortByLength(str) {
+//   return str.split(' ').sort((a, b) => b.length - a.length).join(' ');
+// }
+// console.log(sortByLength("men dasturlashni o'rganyapman"));
 
+// // 7.
+// function firstLetters(str) {
+//   return str.split(' ').map(w => w[0]).join('');
+// }
+// console.log("7:", firstLetters(" some people are really amazing"));
+
+// // 8.
+// function squareDigits(str) {
+//   return str.replace(/\d/g, n => n * n);
+// }
+// console.log(squareDigits("a2b3c4"));
+
+// // 9.
+// function vowelWords(str) {
+//   const vowels = "aeiouo'AEIOUO'";
+//   return str.split(' ').filter(w => vowels.includes(w[0]));
+// }
+// console.log(vowelWords("olma nok anor behi uzum"));
+// // 10. 
+// function incrementDigits(str) {
+//   return str.replace(/\d/g, n => Number(n) + 1);
+// }
+// console.log(incrementDigits("a1b2"));
+
+// // 11. 
+// function reverseEachWord(str) {
+//   return str.split(' ').map(w => w.split('').reverse().join('')).join(' ');
+// }
+// console.log(reverseEachWord("salom dunyo"));
+
+// // 12. 
+// function countEqualLengthPairs(str) {
+//   let words = str.split(' '), count = 0;
 //   for (let i = 0; i < words.length; i++) {
 //     for (let j = i + 1; j < words.length; j++) {
-//       if (words[i].length < words[j].length) {
-//         let temp = words[i];
-//         words[i] = words[j];
-//         words[j] = temp;
-//       }
+//       if (words[i].length === words[j].length) count++;
 //     }
 //   }
-
-//   return words;
-// }
-
-// console.log(myFunc("hi hello world"));
-
-// 7-masala
-// function myFunc(text) {
-//   let words = text.split(" ");
-//   let result = "";
-
-//   for (let i = 0; i < words.length; i++) {
-//     result += words[i][0];
-//   }
-
-//   return result;
-// }
-
-// console.log(myFunc("hello world javascript"));
-
-// 8-masala
-// function myFunc(str) {
-//   let result = "";
-
-//   for (let i = 0; i < str.length; i++) {
-//     let ch = str[i];
-
-//     if (ch >= "0" && ch <= "9") {
-//       let num = ch - "0";
-//       result += num * num;
-//     } else {
-//       result += ch;
-//     }
-//   }
-
-//   return result;
-// }
-
-// console.log(myFunc("a2b3"));
-
-// 9-masala
-// function myWords(text) {
-//   let words = text.split(" ");
-//   let result = [];
-//   let vowels = "aeiouAEIOU";
-
-//   for (let i = 0; i < words.length; i++) {
-//     let first = words[i][0];
-//     let isVowel = false;
-
-//     for (let j = 0; j < vowels.length; j++) {
-//       if (first === vowels[j]) isVowel = true;
-//     }
-
-//     if (isVowel) {
-//       result[result.length] = words[i];
-//     }
-//   }
-
-//   return result;
-// }
-
-// console.log(myWords("apple banana orange egg"));
-
-// 10-masala
-// function myFunc(str) {
-//   let result = "";
-
-//   for (let i = 0; i < str.length; i++) {
-//     let ch = str[i];
-
-//     if (ch >= "0" && ch <= "9") {
-//       let num = ch - "0";
-//       result += num + 1;
-//     } else {
-//       result += ch;
-//     }
-//   }
-
-//   return result;
-// }
-
-// console.log(myFunc("a1b2c3"));
-
-// 11-masala
-// function reverseWords(text) {
-//   let words = text.split(" ");
-//   let result = [];
-
-//   for (let i = words.length - 1; i >= 0; i--) {
-//     result[result.length] = words[i];
-//   }
-
-//   return result.join(" ");
-// }
-
-// console.log(reverseWords("hello world js"));
-
-// 12-masala
-// function myFunc(text) {
-//   let words = text.split(" ");
-//   let count = 0;
-
-//   for (let i = 0; i < words.length; i++) {
-//     for (let j = i + 1; j < words.length; j++) {
-//       if (words[i].length === words[j].length) {
-//         count++;
-//       }
-//     }
-//   }
-
 //   return count;
 // }
-
-// console.log(myFunc("hi world no java"));
-
-// 13-masala
+// console.log(countEqualLengthPairs("ana mana sana"));
+// // 13.
 // function difference(arr1, arr2) {
-//   let result = [];
-
-//   for (let i = 0; i < arr1.length; i++) {
-//     let found = false;
-
-//     for (let j = 0; j < arr2.length; j++) {
-//       if (arr1[i] === arr2[j]) found = true;
-//     }
-
-//     if (!found) result[result.length] = arr1[i];
-//   }
-
-//   return result;
+//   return arr1.filter(x => !arr2.includes(x));
 // }
-
 // console.log(difference([1, 2, 3], [2, 4]));
 
-// 14-masala
-// function myFunc(arr) {
-//   let result = {};
-
-//   for (let i = 0; i < arr.length; i++) {
-//     let first = arr[i][0];
-
-//     if (!result[first]) result[first] = [];
-
-//     result[first][result[first].length] = arr[i];
-//   }
-
-//   return result;
+// // 14.
+// function groupByFirstLetter(arr) {
+//   return arr.reduce((acc, word) => {
+//     let char = word[0].toUpperCase();
+//     if (!acc[char]) acc[char] = [];
+//     acc[char].push(word);
+//     return acc;
+//   }, {});
 // }
+// console.log(groupByFirstLetter(["Apple", "Banana", "Apricot", "Blueberry"]));
 
-// console.log(myFunc(["apple", "ant", "banana"]));
-
-// 15-masala
-// function myFunc(arr) {
-//   let result = [];
-
-//   for (let i = 0; i < arr.length; i++) {
-//     let count = 0;
-
-//     for (let j = 0; j < arr.length; j++) {
-//       if (arr[i] === arr[j]) count++;
-//     }
-
-//     result[result.length] = arr[i] + "(" + count + ")";
-//   }
-
-//   return result;
+// // 15.
+// function markOccurrences(arr) {
+//   let counts = {};
+//   return arr.map(x => {
+//     counts[x] = (counts[x] || 0) + 1;
+//     return `${x}(${counts[x]})`;
+//   });
 // }
+// console.log(markOccurrences(['a', 'b', 'a']));
 
-// console.log(myFunc(["a", "b", "a"]));
-
-// 16-masala
-// function myfunc(arr) {
-//   let result = [];
-
-//   for (let i = 0; i < arr.length; i++) {
-//     let found = -1;
-
+// // 16. 
+// function nextGreater(arr) {
+//   return arr.map((x, i) => {
 //     for (let j = i + 1; j < arr.length; j++) {
-//       if (arr[j] > arr[i]) {
-//         found = arr[j];
-//         break;
-//       }
+//       if (arr[j] > x) return arr[j];
 //     }
-
-//     result[result.length] = found;
-//   }
-
-//   return result;
+//     return -1;
+//   });
 // }
+// console.log(nextGreater([1, 5, 3, 6, 2]));
+// // 1. 
+// console.log((function (arr) {
+//   return arr
+//     .filter(n => n > 0)
+//     .map(n => n % 2 === 0 ? n * n : n)
+//     .reduce((sum, n) => sum + n, 0);
+// })([-2, 1, 2, 3, 4]));
 
-// console.log(myfunc([4, 5, 2, 10]));
-
-// 17-masala
-// let arr = [-1, 2, -3, 5, -6, 7, -8];
-
-// let sum = 0;
-
-// for (let i = 0; i < arr.length; i++) {
-//   if (arr[i] > 0) {
-//     if (arr[i] % 2 === 0) {
-//       arr[i] = arr[i] * arr[i];
-//     }
-//     sum += arr[i];
-//   } else {
-//     arr[i] = 0;
-//   }
-// }
-
-// console.log(arr);
-// console.log(sum);
-
-// 18-masala
+// // 2. 
 // function checkTwoArr(arr1, arr2) {
-//   for (let i = 0; i < arr1.length; i++) {
-//     for (let j = 0; j < arr2.length; j++) {
-//       if (arr1[i] === arr2[j]) {
-//         return false;
-//       }
-//     }
-//   }
-//   return true;
+//   return arr1.every(item => !arr2.includes(item));
 // }
-// console.log(checkTwoArr([9, 9, 8], [8, 9]));
+// console.log(checkTwoArr([1, 2, 3, 4], [0, 6]));
+// console.log(checkTwoArr([1, 2, 3, 4], [2, 3]));
 
-// 19-masala
+// // 3.
 // function sortArray(arr1, arr2, str) {
+//   let merged = [...arr1, ...arr2].sort((a, b) => a - b);
+//   let reversed = [...merged].reverse();
+//   let repeatedStr = Array(merged.length).fill(str);
 
-//   let numbers = [];
-//   for (let i = 0; i < arr1.length; i++) numbers.push(arr1[i]);
-//   for (let i = 0; i < arr2.length; i++) numbers.push(arr2[i]);
-
-//   let sortedAsc = [];
-//   for (let i = 0; i < numbers.length; i++) {
-//     sortedAsc.push(numbers[i]);
-//   }
-//   for (let i = 0; i < sortedAsc.length - 1; i++) {
-//     for (let j = i + 1; j < sortedAsc.length; j++) {
-//       if (sortedAsc[i] > sortedAsc[j]) {
-//         let temp = sortedAsc[i];
-//         sortedAsc[i] = sortedAsc[j];
-//         sortedAsc[j] = temp;
-//       }
-//     }
-//   }
-
-//   let sortedDesc = [];
-//   for (let i = sortedAsc.length - 1; i >= 0; i--) {
-//     sortedDesc.push(sortedAsc[i]);
-//   }
-
-//   let repeatedStr = [];
-//   for (let i = 0; i < numbers.length; i++) {
-//     repeatedStr.push(str);
-//   }
-
-//   return [sortedAsc, sortedDesc, repeatedStr];
+//   console.log(merged);
+//   console.log(reversed);
+//   console.log(repeatedStr);
 // }
+// sortArray([1, 10], [2, 3, 4], 'nodejs');
 
-// let result = sortArray([1, 10], [2, 3, 4], "nodejs");
-// console.log(result[0]); // [1, 2, 3, 4, 10]
-// console.log(result[1]); // [10, 4, 3, 2, 1]
-// console.log(result[2]); // ['nodejs', 'nodejs', 'nodejs', 'nodejs', 'nodejs']
-
-// 20-masala
+// // 4.
 // function numberSplit(n) {
-//   let first, second;
-
-//   if (n % 2 === 0) {
-//     first = n / 2;
-//     second = n / 2;
-//   } else {
-//     first = (n - 1) / 2;
-//     second = first + 1;
-//   }
-
-//   return [first, second];
+//   return [Math.floor(n / 2), Math.ceil(n / 2)];
 // }
-
+// console.log(numberSplit(11));
+// console.log(numberSplit(4));
 // console.log(numberSplit(-9));
 
-// 21-masala
+// // 5. 
 // function sortByLength(arr) {
-//   for (let i = 0; i < arr.length; i++) {
-//     for (let j = 0; j < arr.length - 1; j++) {
-//       if (arr[j].length > arr[j + 1].length) {
-//         let temp = arr[j];
-//         arr[j] = arr[j + 1];
-//         arr[j + 1] = temp;
-//       }
-//     }
-//   }
-//   return arr;
+//   return arr.sort((a, b) => a.length - b.length);
 // }
-
+// console.log(sortByLength(["apple", "pie", "shortcake"]));
 // console.log(sortByLength(["a", "ccc", "dddd", "bb"]));
-
-// 22-masala
-// let arr = [5, 2, 8, 7, 4, 3, 6];
-// let evenNumbers = [];
-// for (let i = 0; i < arr.length; i++) {
-//   if (arr[i] % 2 === 0) {
-//     evenNumbers.push(arr[i]);
-//   }
+// // 6. 
+// console.log((function(arr) {
+//     return arr
+//         .filter(n => n % 2 === 0)
+//         .sort((a, b) => a - b)
+//         .map(n => n * 2);
+// })([10, 5, 2, 8, 1, 4]));
+// // 7.
+// function reverseImage(matrix) {
+//     return matrix.reverse().map(row => row.reverse());
 // }
-
-// for (let i = 0; i < evenNumbers.length - 1; i++) {
-//   for (let j = i + 1; j < evenNumbers.length; j++) {
-//     if (evenNumbers[i] > evenNumbers[j]) {
-//       let temp = evenNumbers[i];
-//       evenNumbers[i] = evenNumbers[j];
-//       evenNumbers[j] = temp;
-//     }
-//   }
-// }
-
-// let evenIndex = 0;
-// for (let i = 0; i < arr.length; i++) {
-//   if (arr[i] % 2 === 0) {
-//     arr[i] = evenNumbers[evenIndex] * 2;
-//     evenIndex++;
-//   }
-// }
-
-// console.log(arr);
-
-// 23-masala
-// function reverseImage(arr) {
-//   let result = [];
-
-//   for (let i = arr.length - 1; i >= 0; i--) {
-//     let row = [];
-//     for (let j = arr[i].length - 1; j >= 0; j--) {
-//       row[row.length] = arr[i][j];
-//     }
-//     result[result.length] = row;
-//   }
-//   return result;
-// }
-
-// console.log(reverseImage([[1, 2, 3],[4, 5, 6],[7, 8, 9],]),);
-
-// 24-masala
+// console.log(reverseImage([
+//     [1, 2, 3],
+//     [4, 5, 6],
+//     [7, 8, 9]
+// ]));
+// // 8. 
 // function changeNumberToString(start, end) {
-//   let words = ["zero","one","two","three","four","five","six","seven","eight","nine","ten",];
-//   let res = [];
-//   for (let i = start; i <= end; i++) {
-//     res[res.length] = words[i];
-//   }
-//   return res;
-// }
-
-// console.log(changeNumberToString(1, 5));
-
-// 25-masala
-// function addToArray(n) {
-//   let result = [];
-//   for (let i = 1; i <= n; i++) {
-//     result[result.length] = i;
-//   }
-
-//   let ch = [];
-//   for (let i = 0; i < result.length; i += 3) {
-//     let group = [];
-//     for (let j = 0; j < 3 && i + j < result.length; j++) {
-//       group[group.length] = result[i + j];
+//     const numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+//     let res = [];
+//     for (let i = start; i <= end; i++) {
+//         res.push(numbers[i]);
 //     }
-//     ch[ch.length] = group;
-//   }
-//   return ch;
+//     console.log(res);
+//     console.log([...res].sort(() => Math.random() - 0.5));
 // }
+// changeNumberToString(1, 5);
 
+// // 9.
+// function addToArray(n) {
+//     let fullArr = Array.from({ length: n }, (_, i) => i + 1);
+//     console.log( fullArr);
+    
+//     let chunked = [];
+//     for (let i = 0; i < fullArr.length; i += 3) {
+//         chunked.push(fullArr.slice(i, i + 3));
+//     }
+//     return chunked;
+// }
 // console.log(addToArray(10));
 
-// 26-masala
-// function engKopUnliSoz(text) {
-//   const unli = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
-//   const words = text.split(" ");
+// // 10.
+// function mostVowels(str) {
+//     const vowels = "aeiouo'AEIOUO'";
+//     let words = str.split(' ');
+//     let maxVowels = 0;
+//     let resultWord = "";
 
-//   let maxUnliCount = 0;
-//   let resultWord = "";
-
-//   for (const word of words) {
-//     let count = 0;
-//     for (const letter of word) {
-//       if (unli.includes(letter)) {
-//         count++;
-//       }
-//     }
-//     if (count > maxUnliCount) {
-//       maxUnliCount = count;
-//       resultWord = word;
-//     }
-//   }
-
-//   return resultWord;
+//     words.forEach(word => {
+//         let count = word.split('').filter(char => vowels.includes(char)).length;
+//         if (count > maxVowels) {
+//             maxVowels = count;
+//             resultWord = word;
+//         }
+//     });
+//     return resultWord;
 // }
-
-// const text = "Salom dunyo, bu yerda backend node js guruhida o'qiymiz";
-// console.log(engKopUnliSoz(text));
+// console.log(mostVowels("dasturlash juda qiziqarli va ajoyib soha"));
